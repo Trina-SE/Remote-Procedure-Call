@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css'; // Import the CSS file
 
 const App = () => {
   const [method, setMethod] = useState('');
@@ -22,35 +23,39 @@ const App = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Simple RPC Client</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Method Name:</label>
+    <div className="app-container">
+      <h1 className="title">Simple RPC Client</h1>
+      <form className="rpc-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className="form-label">Method Name:</label>
           <input
             type="text"
+            className="form-input"
             value={method}
             onChange={(e) => setMethod(e.target.value)}
             placeholder="e.g., factorial, add, subtract"
             required
           />
         </div>
-        <div>
-          <label>Parameters (comma-separated):</label>
+        <div className="form-group">
+          <label className="form-label">Parameters (comma-separated):</label>
           <input
             type="text"
+            className="form-input"
             value={params}
             onChange={(e) => setParams(e.target.value)}
             placeholder="e.g., 4 or 3,5"
             required
           />
         </div>
-        <button type="submit">Invoke</button>
+        <button type="submit" className="form-button">
+          Invoke
+        </button>
       </form>
       {result !== '' && (
-        <div>
-          <h2>Result:</h2>
-          <p>{result}</p>
+        <div className="result-container">
+          <h2 className="result-title">Result:</h2>
+          <p className="result-text">{result}</p>
         </div>
       )}
     </div>
